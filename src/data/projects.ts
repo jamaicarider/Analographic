@@ -18,7 +18,7 @@ export type Project = {
 const ph = (n: number): MediaItem[] => Array.from({ length: n }, () => ({ type: 'image' as const }));
 
 export const STRIP_LIMIT = 5;
-export const PROJECT_LIMIT = 15;
+export const PROJECT_LIMIT = 16;
 
 const placeholderProjects: Project[] = [1, 2, 3, 4].map((n) => ({
   slug: `projeto-${n}`,
@@ -59,6 +59,7 @@ export const projects: Project[] = [
     ],
     closing: 'Thank you!',
     media: [
+      { type: 'video', src: '/projetos/sal/Filme%20SAL%20Oceane_se%20horizontal.mp4' },
       { type: 'image', src: '/projetos/sal/capa_1.jpg' },
       ...Array.from({ length: 13 }, (_, i) => ({
         type: 'image' as const,

@@ -12,10 +12,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Intro */
 .intro { position: relative; height: 100vh; background: #000; display: grid; place-items: center; }
-.logo { width: min(40vw, 320px); transition: transform 1s ease-in-out; }
-.logo:hover { transform: rotate(360deg); }
-@media (prefers-reduced-motion: reduce) { .logo { transition: none; } }
-.intro-nav { position: absolute; inset: auto 0 40px 0; display: flex; justify-content: space-between; padding: 0 32px; color: #fff; font-size: 18px; }
+.logo { width: min(66.3vw, 578px); max-height: 66.3vh; object-fit: contain; animation: intro-drift 6s ease-in-out infinite alternate; }
+@keyframes intro-drift { from { transform: translateY(8px); } to { transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .logo { animation: none; } }
+.intro-nav { position: absolute; inset: 50% 0 auto; transform: translateY(-50%); display: flex; justify-content: space-between; padding: 0 32px; color: #fff; font-size: 18px; }
 .shop { cursor: default; }
 .shop::after { content: 'Shop'; }
 .shop:hover::after { content: 'Em breve'; opacity: .6; }
@@ -27,6 +27,7 @@ a { color: inherit; text-decoration: none; }
 .strip-link { display: block; }
 .track { display: flex; gap: 8px; width: max-content; padding-left: 8px; will-change: transform; }
 .cell { width: 26vw; min-width: 220px; aspect-ratio: 4 / 5; object-fit: cover; }
+img[src$="behance-sal.gif"] { background-color: #000; }
 .ph { background: var(--ph); }
 .cell:hover { outline: 3px solid var(--accent); outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) { .strip-wrap { overflow-x: auto; } }
