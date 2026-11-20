@@ -59,7 +59,11 @@ export const projects: Project[] = [
     ],
     closing: 'Thank you!',
     media: [
-      { type: 'video', src: '/projetos/sal/Filme%20SAL%20Oceane_se%20horizontal.mp4' },
+      {
+        type: 'video',
+        src: '/projetos/sal/Filme%20SAL%20Oceane_se%20horizontal.mp4',
+        poster: '/projetos/sal/CAPA_08.png',
+      },
       { type: 'image', src: '/projetos/sal/capa_1.jpg' },
       ...Array.from({ length: 13 }, (_, i) => ({
         type: 'image' as const,
