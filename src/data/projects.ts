@@ -20,7 +20,29 @@ const ph = (n: number): MediaItem[] => Array.from({ length: n }, () => ({ type: 
 export const STRIP_LIMIT = 5;
 export const PROJECT_LIMIT = 16;
 
-const placeholderProjects: Project[] = [1, 2, 3, 4].map((n) => ({
+const nflProject: Project = {
+  slug: 'projeto-2',
+  title: 'Welcome × NFL',
+  client: 'NFL x Welcome Sunny Garments',
+  services: ['Graphic Design', 'Illustration', 'Creative Copy'],
+  serviceLine: 'Graphic Design, Illustration & Creative Copy',
+  summary: 'Estampas vintage para a colaboração Welcome × NFL durante a International Series no Rio de Janeiro.',
+  description:
+    'Uma série de estampas desenvolvidas para a colaboração Welcome × NFL, durante a International Series, realizada no Rio de Janeiro em 2026. O projeto explora releituras vintage do universo do futebol americano, resgatando referências gráficas, elementos históricos e a estética esportiva de outras épocas em uma linguagem contemporânea.',
+  credits: [
+    { role: 'Designed by', name: 'analographic.co', href: 'https://www.instagram.com/analographic.co/' },
+    { role: 'Graphic Design', name: 'Rob Abreu & Pedro Miceli' },
+    { role: 'Illustration & Creative Copy', name: 'Rob Abreu' },
+    { role: 'Photography', name: 'Pedro Miceli' },
+    { role: 'Model', name: 'Matheus Batis' },
+  ],
+  media: Array.from({ length: 10 }, (_, i) => ({
+    type: 'image' as const,
+    src: `/projetos/nfl/nfl_${i + 1}.jpg`,
+  })),
+};
+
+const placeholderProjects: Project[] = [1, 3, 4].map((n) => ({
   slug: `projeto-${n}`,
   title: `Projeto ${n}`,
   client: `@cliente${n}`,
@@ -72,6 +94,7 @@ export const projects: Project[] = [
       { type: 'image', src: '/projetos/sal/behance-sal.gif' },
     ],
   },
+  nflProject,
   ...placeholderProjects,
 ];
 
