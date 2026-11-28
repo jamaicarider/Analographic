@@ -86,7 +86,7 @@ export const projects: Project[] = [
         src: '/projetos/sal/Filme%20SAL%20Oceane_se%20horizontal.mp4',
         poster: '/projetos/sal/CAPA_08.png',
       },
-      { type: 'image', src: '/projetos/sal/capa_1.jpg' },
+      { type: 'image', src: '/projetos/sal/capa_1.png' },
       ...Array.from({ length: 13 }, (_, i) => ({
         type: 'image' as const,
         src: `/projetos/sal/CAPA_${String(i + 1).padStart(2, '0')}.png`,

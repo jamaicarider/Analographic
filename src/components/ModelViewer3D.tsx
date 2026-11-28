@@ -1,6 +1,6 @@
 'use client';
 
-import { Bounds, Center, ContactShadows, Environment, Html, OrbitControls, useGLTF, useTexture } from '@react-three/drei';
+import { Bounds, Center, ContactShadows, Environment, OrbitControls, useGLTF, useProgress, useTexture } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { clone as cloneSkeleton } from 'three/addons/utils/SkeletonUtils.js';
 import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
@@ -25,8 +25,10 @@ const defaultWoodTexturePaths: WoodTexturePaths = {
   roughnessMap: '/textures/wood-roughness.jpg',
 };
 
-function LoadingFallback() {
-  return <Html center><span className="model-viewer-loading">Carregando modelo...</span></Html>;
+function ModelLoadingOverlay() {
+  const { active } = useProgress();
+  if (!active) return null;
+  return <div className="model-viewer-loading" role="status">Carregando modelo...</div>;
 }
 
 function WoodMaterialOverride({ scene, paths }: { scene: Object3D; paths: WoodTexturePaths }) {
@@ -113,7 +115,7 @@ export default function ModelViewer3D({
         gl={{ alpha: true, antialias: true }}
         style={{ background: 'transparent' }}
       >
-        <Suspense fallback={<LoadingFallback />}>
+        <Suspense fallback={null}>
           <Environment preset="studio" />
           <directionalLight position={[4, 6, 5]} intensity={1.25} />
           <Bounds fit clip observe margin={1.2}>
@@ -141,6 +143,7 @@ export default function ModelViewer3D({
           />
         </Suspense>
       </Canvas>
+      <ModelLoadingOverlay />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -26,7 +27,9 @@ export default function Header() {
 
   return (
     <header className={`header ${introVisible ? 'hidden' : ''}`}>
-      <Link href="/" className="brand">Analographic</Link>
+      <Link href="/" className="brand">
+        <Image src="/logosfavicon/Ativo%209.png" alt="Analographic" width={523} height={191} className="brand-logo" />
+      </Link>
       <nav>{links.map((l) => <Link key={l.label} href={l.href}>{l.label}</Link>)}</nav>
     </header>
   );

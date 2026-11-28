@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const principles = [
   {
     title: 'Olhar autoral',
@@ -28,10 +30,15 @@ const services = [
 
 const logos = Array.from({ length: 17 }, (_, index) => `/logos/cliente-${String(index + 1).padStart(2, '0')}.png`);
 
-function ImagePlaceholder({ label, className = '' }: { label: string; className?: string }) {
+function StudioImage({ src, alt, className = '', sizes = '100vw' }: {
+  src: string;
+  alt: string;
+  className?: string;
+  sizes?: string;
+}) {
   return (
-    <div className={`about-image-placeholder ${className}`} role="img" aria-label={`Espaço reservado para ${label}`}>
-      <span>{label}</span>
+    <div className={`about-studio-image ${className}`}>
+      <Image src={src} alt={alt} fill sizes={sizes} className="about-studio-photo" />
     </div>
   );
 }
@@ -45,7 +52,11 @@ export default function Estudio() {
         <p className="about-lead">
           Design, imagem e ideias para marcas que querem ocupar seu próprio espaço no mundo.
         </p>
-        <ImagePlaceholder label="imagem do estúdio e processo criativo" className="about-hero-image" />
+        <StudioImage
+          src="/imagesstudio/ROB%20FOR%20BIRDEN-6.jpg"
+          alt="Rob trabalhando à mesa no estúdio, cercado por projetos e referências."
+          className="about-hero-image"
+        />
       </section>
 
       <section className="about-difference">
@@ -64,9 +75,19 @@ export default function Estudio() {
         </div>
       </section>
 
-      <section className="about-image-pair" aria-label="Espaços reservados para imagens do estúdio">
-        <ImagePlaceholder label="detalhe de projeto ou material impresso" className="about-image-tall" />
-        <ImagePlaceholder label="mesa de trabalho e referências visuais" className="about-image-small" />
+      <section className="about-image-pair" aria-label="Fotos do estúdio e processo criativo">
+        <StudioImage
+          src="/imagesstudio/ROB%20FOR%20BIRDEN-24.jpg"
+          alt="Mão desenhando em um caderno ao lado de materiais de trabalho."
+          className="about-image-tall"
+          sizes="(max-width: 700px) 55vw, 60vw"
+        />
+        <StudioImage
+          src="/imagesstudio/ROB%20FOR%20BIRDEN-23.jpg"
+          alt="Vista do artista trabalhando à mesa no estúdio."
+          className="about-image-small"
+          sizes="(max-width: 700px) 40vw, 45vw"
+        />
       </section>
 
       <section className="about-clients">
@@ -103,7 +124,11 @@ export default function Estudio() {
       </section>
 
       <section className="about-closing">
-        <ImagePlaceholder label="imagem de projeto ou campanha" className="about-closing-image" />
+        <StudioImage
+          src="/imagesstudio/ROB%20FOR%20BIRDEN-26.jpg"
+          alt="Rob sentado no estúdio, com materiais de trabalho ao redor."
+          className="about-closing-image"
+        />
         <p className="about-eyebrow">Vamos criar algo com significado?</p>
         <a href="/contato">Conte sua ideia <span aria-hidden="true">↗</span></a>
       </section>
